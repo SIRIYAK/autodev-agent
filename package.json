@@ -1,0 +1,43 @@
+{
+  "name": "autodev-agent",
+  "displayName": "AutoDev-Agent",
+  "description": "A modular multi-agent AI assistant for planning, coding, debugging, and answering developer questions in VS Code.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:autodevAgent.start"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -p . --watch",
+    "lint": "eslint . --ext .ts",
+    "test": "mocha --recursive --require ts-node/register tests/**/*.test.ts",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "vscode"
+  ],
+  "author": "AutoDev-Agent Team",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.5.2",
+    "ts-node": "^10.9.1",
+    "mocha": "^10.2.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.84.0",
+    "vscode-test": "^1.6.1",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0"
+  }
+}
