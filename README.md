@@ -84,9 +84,48 @@ Each prompt flows through the Architect → Code Agent pipeline, with diffs surf
 
 ## Distribution & Deployment
 
-- Package with `npx vsce package` and attach the `.vsix` to GitHub releases or other marketplaces (Ant Gravity, Claude-friendly portals, etc.).
-- Maintain a `vsce publish` workflow for the Visual Studio Marketplace, storing the PAT in GitHub Secrets and triggering publishes on tagged commits.
-- Document installation instructions (`code --install-extension path/to/AutoDev-Agent-0.1.0.vsix`) in release notes or README so users can install manually.
+### Manual VSIX Packaging
+
+1. **Build the extension:**
+   ```bash
+   npm install
+   npm run build
+   ```
+
+2. **Package the VSIX:**
+   ```bash
+   npx vsce package
+   ```
+   This generates `autodev-agent-0.1.0.vsix` in the project root.
+
+3. **Install locally:**
+   ```bash
+   code --install-extension autodev-agent-0.1.0.vsix
+   ```
+
+### GitHub Release Distribution
+
+1. **Tag a release:**
+   ```bash
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+
+2. **Automated workflow:** The GitHub Action (`.github/workflows/release.yml`) automatically builds, tests, packages, and attaches the `.vsix` to the release.
+
+3. **Manual release:** Alternatively, create a release on GitHub and attach the `.vsix` file manually.
+
+### VS Code Marketplace Publishing
+
+- **Automated:** The `.github/workflows/publish.yml` workflow publishes to the marketplace when triggered. Add your Personal Access Token as `VSCE_PAT` in GitHub Secrets.
+- **Manual:** Run `vsce publish` locally with your PAT configured.
+
+### Installation from Release
+
+Users can download the `.vsix` from your GitHub releases page and install with:
+```bash
+code --install-extension path/to/autodev-agent-0.1.0.vsix
+```
 
 ## GitHub Repository Guidelines
 

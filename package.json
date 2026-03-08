@@ -18,6 +18,7 @@
     "watch": "tsc -p . --watch",
     "lint": "eslint . --ext .ts",
     "test": "mocha --recursive --require ts-node/register tests/**/*.test.ts",
+    "package": "npx vsce package",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -26,7 +27,12 @@
     "vscode"
   ],
   "author": "AutoDev-Agent Team",
+  "publisher": "siriyak",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crsiriyak/autodev-agent"
+  },
   "dependencies": {},
   "devDependencies": {
     "typescript": "^5.5.2",
